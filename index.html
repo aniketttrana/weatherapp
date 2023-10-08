@@ -15,7 +15,6 @@
         <input type="text" placeholder="Enter City Name" spellcheck="false" />
         <button><img src="images/search.png" alt="search image" /></button>
       </div>
-
       <div class="error">
         <p>Invalid City name</p>
       </div>
@@ -49,11 +48,14 @@
       const apiUrl =
         "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
       const searchBox = document.querySelector(".search input");
+      // It will select the input search
       const searchBtn = document.querySelector(".search button");
+      // it will select the search button
       const weatherIcon = document.querySelector(".weather-icon");
 
       const getLocationBtn = document.querySelector("#getLocationBtn");
 
+      // We will add city with the help of checkWeather function
       async function checkWeather(city) {
         const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
         if (response.status == 404) {
@@ -61,16 +63,26 @@
           document.querySelector(".weather").style.display = "none";
         } else {
           var data = await response.json();
-
+          // console.log(data); to get to know about api data
+          // We are changing data acc. to api
           document.querySelector(".city").innerHTML = data.name;
+          // we have name in api inside name
           document.querySelector(".temp").innerHTML =
             Math.round(data.main.temp) + "°C";
+          // Math.round remove the decimals
+          // we have name in api inside main
           document.querySelector(".humidity").innerHTML =
             data.main.humidity + "%";
+          // we have name in api inside main then in humidity
           document.querySelector(".wind").innerHTML = data.wind.speed + "km/hr";
+          //  // we have name in api inside wind then in speed
 
+          // TO UPDATE THE WEATHER IMAGE
           if (data.weather[0].main == "Clouds") {
+            // we have weather in 0 index of array then in main
+            // so we have write  data.weather[0].main
             weatherIcon.src = "images/clouds.png";
+            // WeatherIcon const accesed by javascript
           } else if (data.weather[0].main == "Clear") {
             weatherIcon.src = "images/clear.png";
           } else if (data.weather[0].main == "Rain") {
@@ -89,6 +101,7 @@
       searchBox.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
           checkWeather(searchBox.value);
+          // to get the data written in input field we will add searchBox.value inside it
         }
       });
 

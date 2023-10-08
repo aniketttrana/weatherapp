@@ -3,12 +3,12 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
  }
- body{
+body{
     background:#222;
     overflow: hidden;
     position: relative;
  }
- body::before {
+body::before {
     content: "";
     background: url(images/back.png);
     opacity: 0.8;
@@ -25,8 +25,10 @@
     background:linear-gradient(135deg, #c6e7f7,#5b548a);
     color:#fff;
     margin:20px auto 0;
+    /* 20 px from top , 0 from bottom , left right auto */
     border-radius: 20px;
     padding:28px 35px;
+    /* space inside the card */
     text-align:center;     
 }
 #getLocationBtn{
@@ -79,24 +81,19 @@ cursor:pointer;
 .search button img{
     width:30px;
 }
-
-
 weather-icon{
     width:170px;
     margin-top: 30px;
 }
-
 .weather h1{
     font-size:80px;
     font-weight:500;
 }
-
 .weather h2{
     font-size:45px;
     font-weight:400;
     margin-top:-10px;
 }
-
 .details{
     display:flex;
     align-items:center;
@@ -104,7 +101,6 @@ weather-icon{
     padding:0 20px;
     margin-top:50px;
 }
-
 .col{
     display:flex;
     align-items:center;
@@ -118,9 +114,9 @@ weather-icon{
 font-size: 28px;
 margin-top:-6px;
 }
-
 .weather{
     display:none;
+    /* iF we dont do that . At starting it will show the location of what we have written in htmml i.e New york */
 }
 .error{
     text-align:left;
@@ -128,5 +124,4 @@ margin-top:-6px;
     font-size:14px;
     margin-top:10px;
     display:none;
-
 }
